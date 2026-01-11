@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+<content="width=device-width, initial-scale=1.0">  
+  
 <title>Burhanpur Railway Station | Premium Portal</title>
 <link rel="stylesheet" href="style.css">
 
-<!-- PDF -->
+<!-- PDF Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -15,12 +17,12 @@
 <section class="hero">
   <div class="overlay">
     <h1>Welcome to Burhanpur Railway Station</h1>
-    <p class="tagline">🚆 Safar sirf ek yatra nahi, yaadon ka silsila hota hai</p>
+    <p class="tagline">🚆 “Safar sirf ek yatra nahi, yaadon ka silsila hota hai”</p>
     <button onclick="playAnnouncement()">🔊 Play Announcement</button>
   </div>
 </section>
 
-<!-- SLIDER (same animation) -->
+<!-- SLIDER -->
 <section class="slider">
   <img src="images/station1.jpg" class="slide">
   <img src="images/station2.jpg" class="slide">
@@ -30,32 +32,30 @@
 <!-- HISTORY -->
 <section class="section">
 <h2>History of Burhanpur Railway Station</h2>
-<p>Burhanpur ek aitihasik sheher hai jo Mughal aur British era se juda hua hai.</p>
+<p>
+Burhanpur Madhya Pradesh ka ek prachin aur aitihasik sheher hai.
+Mughal kaal me ye sheher trade aur military movement ka important center tha.
+Burhanpur Railway Station ne British era ke dauran is sheher ko
+desh ke anya hisson se jodne me bahut badi bhumika nibhayi.
+Tapti nadi ke kinare sthit ye station aaj bhi
+North-South railway route ka important junction mana jata hai.
+</p>
+
+<p>
+Yeh station sirf yatra ka madhyam nahi,
+balki sheher ke vikas, rozgar aur tourism ka pramukh kendra raha hai.
+Aaj Burhanpur Railway Station modern facilities ke saath
+heritage aur technology ka perfect combination hai.
+</p>
 </section>
 
 <!-- WEATHER -->
 <section class="section weather">
-<h2>Live Weather</h2>
-<p id="weather">Loading...</p>
+<h2>Live Weather - Burhanpur</h2>
+<p id="weather">Loading weather...</p>
 </section>
 
-<!-- LIVE TRAIN STATUS -->
-<section class="section">
-<h2>🚆 Live Train Status</h2>
-<p id="liveTrain">Checking live train status...</p>
-</section>
-
-<!-- TRAIN TIMETABLE -->
-<section class="section">
-<h2>🕒 Train Time Table</h2>
-<table border="1" width="100%" cellpadding="10">
-<tr><th>Train</th><th>Arrival</th><th>Departure</th><th>Coach</th></tr>
-<tr><td>Tapti Ganga Exp</td><td>10:15 AM</td><td>10:25 AM</td><td>AC / Sleeper</td></tr>
-<tr><td>Punjab Mail</td><td>04:40 PM</td><td>04:55 PM</td><td>Sleeper</td></tr>
-</table>
-</section>
-
-<!-- GALLERY (same layout like first site) -->
+<!-- GALLERY -->
 <section class="section">
 <h2>Railway Station Gallery</h2>
 <div class="gallery">
@@ -67,7 +67,7 @@
 </section>
 
 <!-- TEAM -->
-<section class="section">
+<section class="section team">
 <h2>Project Team</h2>
 <div class="team-box">
   <div class="member">
@@ -83,36 +83,25 @@
 </div>
 </section>
 
-<!-- TICKET BOOKING -->
+<!-- BOOKING -->
 <section class="section booking">
-<h2>🎟 Ticket Booking</h2>
+<h2>Ticket Booking</h2>
 <form id="ticketForm">
   <input id="name" placeholder="Passenger Name" required>
   <input id="from" placeholder="From Station" required>
   <input id="to" placeholder="To Station" required>
-  <select id="coach">
-    <option>AC</option>
-    <option>Sleeper</option>
-  </select>
+  <input type="date" required>
   <button type="submit">Book Ticket & Download PDF</button>
 </form>
 </section>
 
-<!-- CONTACT -->
-<section class="section">
-<h2>📞 Contact Us</h2>
-<form>
-  <input placeholder="Your Name">
-  <input placeholder="Email">
-  <textarea placeholder="Message"></textarea>
-  <button>Send Message</button>
-</form>
-</section>
-
+<!-- FOOTER -->
 <footer>
-<p>© 2026 Burhanpur Railway Station</p>
+<p>© 2026 Burhanpur Railway Station | College Project</p>
+<p>Designed by Raj & Rahul</p>
 </footer>
 
 <script src="script.js"></script>
 </body>
+<!-- updated -->
 </html>
