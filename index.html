@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Burhanpur Railway Station | Premium Portal</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burhanpur Railway Station | Premium Portal</title>
+<link rel="stylesheet" href="style.css">
 
-  <!-- PDF Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -15,12 +15,12 @@
 <section class="hero">
   <div class="overlay">
     <h1>Welcome to Burhanpur Railway Station</h1>
-    <p class="tagline">🚆 “Safar sirf ek yatra nahi, yaadon ka silsila hota hai”</p>
+    <p class="tagline">🚆 Safar sirf ek yatra nahi, yaadon ka silsila hota hai</p>
     <button onclick="playAnnouncement()">🔊 Play Announcement</button>
   </div>
 </section>
 
-<!-- SLIDER -->
+<!-- SLIDER (same animation) -->
 <section class="slider">
   <img src="images/station1.jpg" class="slide">
   <img src="images/station2.jpg" class="slide">
@@ -29,84 +29,88 @@
 
 <!-- HISTORY -->
 <section class="section">
-  <h2>History of Burhanpur Railway Station</h2>
-  <p>Burhanpur Madhya Pradesh ka prachin aur aitihasik sheher hai...</p>
+<h2>History of Burhanpur Railway Station</h2>
+<p>Burhanpur ek aitihasik sheher hai jo Mughal aur British era se juda hua hai.</p>
 </section>
 
 <!-- WEATHER -->
 <section class="section weather">
-  <h2>Live Weather - Burhanpur</h2>
-  <p id="weather">Loading weather...</p>
+<h2>Live Weather</h2>
+<p id="weather">Loading...</p>
 </section>
 
-<!-- TRAIN SEARCH -->
+<!-- LIVE TRAIN STATUS -->
 <section class="section">
-  <h2>Search Train</h2>
-  <input type="text" id="trainSearch" placeholder="Enter Train Name or Number">
+<h2>🚆 Live Train Status</h2>
+<p id="liveTrain">Checking live train status...</p>
 </section>
 
-<!-- TRAIN STATUS -->
+<!-- TRAIN TIMETABLE -->
 <section class="section">
-  <h2>Live Train Status & Timetable</h2>
-  <table class="train-table">
-    <tr>
-      <th>No</th><th>Name</th><th>Coach</th><th>Arrival</th><th>Departure</th><th>Status</th>
-    </tr>
-    <tr>
-      <td>11071</td><td>Kamayani Express</td><td>AC • Sleeper</td>
-      <td>10:40</td><td>10:55</td><td class="on-time">On Time</td>
-    </tr>
-    <tr>
-      <td>12138</td><td>Punjab Mail</td><td>AC • Sleeper</td>
-      <td>14:15</td><td>14:30</td><td class="delayed">Delayed</td>
-    </tr>
-  </table>
+<h2>🕒 Train Time Table</h2>
+<table border="1" width="100%" cellpadding="10">
+<tr><th>Train</th><th>Arrival</th><th>Departure</th><th>Coach</th></tr>
+<tr><td>Tapti Ganga Exp</td><td>10:15 AM</td><td>10:25 AM</td><td>AC / Sleeper</td></tr>
+<tr><td>Punjab Mail</td><td>04:40 PM</td><td>04:55 PM</td><td>Sleeper</td></tr>
+</table>
 </section>
 
-<!-- PLATFORM & SEATS -->
+<!-- GALLERY (same layout like first site) -->
 <section class="section">
-  <h2>Platform & Seat Availability</h2>
-  <table class="train-table">
-    <tr>
-      <th>Train</th><th>Platform</th><th>AC</th><th>Sleeper</th>
-    </tr>
-    <tr>
-      <td>Kamayani Express</td><td>2</td>
-      <td class="available">Available</td>
-      <td class="waiting">WL 10</td>
-    </tr>
-  </table>
+<h2>Railway Station Gallery</h2>
+<div class="gallery">
+  <img src="images/station1.jpg">
+  <img src="images/station2.jpg">
+  <img src="images/station3.jpg">
+  <img src="images/station1.jpg">
+</div>
 </section>
 
-<!-- PLATFORM ANNOUNCEMENT -->
+<!-- TEAM -->
 <section class="section">
-  <h2>Platform Announcement</h2>
-  <button onclick="platformAnnouncement()">🔊 Announce Platform</button>
+<h2>Project Team</h2>
+<div class="team-box">
+  <div class="member">
+    <img src="images/raj.jpeg">
+    <h3>Raj Patil</h3>
+    <p>Frontend Developer</p>
+  </div>
+  <div class="member">
+    <img src="images/rahul.jpeg">
+    <h3>Rahul Chimankar</h3>
+    <p>UI / UX Designer</p>
+  </div>
+</div>
 </section>
 
-<!-- MAP -->
+<!-- TICKET BOOKING -->
+<section class="section booking">
+<h2>🎟 Ticket Booking</h2>
+<form id="ticketForm">
+  <input id="name" placeholder="Passenger Name" required>
+  <input id="from" placeholder="From Station" required>
+  <input id="to" placeholder="To Station" required>
+  <select id="coach">
+    <option>AC</option>
+    <option>Sleeper</option>
+  </select>
+  <button type="submit">Book Ticket & Download PDF</button>
+</form>
+</section>
+
+<!-- CONTACT -->
 <section class="section">
-  <h2>Station Location</h2>
-  <iframe
-    src="https://www.google.com/maps?q=Burhanpur%20Railway%20Station&output=embed"
-    width="100%" height="350" style="border:0;border-radius:15px;">
-  </iframe>
-</section>
-
-<!-- CONTACT US -->
-<section class="section contact">
-  <h2>Contact Us</h2>
-  <form id="contactForm">
-    <input id="cname" placeholder="Your Name" required>
-    <input id="cemail" type="email" placeholder="Your Email" required>
-    <textarea id="cmsg" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-  <p id="contactStatus"></p>
+<h2>📞 Contact Us</h2>
+<form>
+  <input placeholder="Your Name">
+  <input placeholder="Email">
+  <textarea placeholder="Message"></textarea>
+  <button>Send Message</button>
+</form>
 </section>
 
 <footer>
-  <p>© 2026 Burhanpur Railway Station | College Project</p>
+<p>© 2026 Burhanpur Railway Station</p>
 </footer>
 
 <script src="script.js"></script>
