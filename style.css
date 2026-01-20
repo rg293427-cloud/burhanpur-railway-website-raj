@@ -62,11 +62,14 @@ text-align:center;
 
 /* GALLERY */
 .gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
-.gallery img{width:100%;border-radius:10px;}
+.gallery img{
+  width: 24%;
+  border-radius: 10px;
+}
 
 /* TEAM */
 .team-box{
@@ -105,4 +108,17 @@ background:#111;
 color:white;
 text-align:center;
 padding:30px;
+}
+
+/* FORCE GALLERY 4 IMAGES IN ONE LINE */
+.gallery{
+  display: flex !important;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.gallery img{
+  width: 24% !important;
+  height: auto;
+  border-radius: 10px;
 }
