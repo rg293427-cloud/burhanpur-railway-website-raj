@@ -15,7 +15,7 @@
 <section class="hero">
   <div class="overlay">
     <h1>Welcome to Burhanpur Railway Station</h1>
-    <p class="tagline">🚆 “Safar sirf ek yatra nahi, yaadon ka silsila hota hai”</p>
+    <p class="tagline">🚆 "Travel is not just a journey, it's a series of memories"</p>
     <button onclick="playAnnouncement()">🔊 Station Announcement</button>
   </div>
 </section>
@@ -31,18 +31,10 @@
 <section class="section">
 <h2>History of Burhanpur Railway Station</h2>
 <p>
-Burhanpur Madhya Pradesh ka ek prachin aur aitihasik sheher hai.
-Mughal kaal me ye sheher trade aur military movement ka important center tha.
-Burhanpur Railway Station ne British era ke dauran is sheher ko
-desh ke anya hisson se jodne me bahut badi bhumika nibhayi.
-Tapti nadi ke kinare sthit ye station aaj bhi
-North-South railway route ka important junction mana jata hai.
+Burhanpur is an ancient and historic city in Madhya Pradesh. During the Mughal era, this city was an important center for trade and military movement. Burhanpur Railway Station played a major role in connecting the city with other parts of the country during the British era. Situated on the banks of the Tapti River, this station is still considered an important junction on the North-South railway route.
 </p>
 <p>
-Yeh station sirf yatra ka madhyam nahi,
-balki sheher ke vikas, rozgar aur tourism ka pramukh kendra raha hai.
-Aaj Burhanpur Railway Station modern facilities ke saath
-heritage aur technology ka perfect combination hai.
+The station has not only been a means of travel but also a major center for city development, employment, and tourism. Today, Burhanpur Railway Station offers modern facilities and is a perfect blend of heritage and technology.
 </p>
 </section>
 
@@ -69,27 +61,28 @@ heritage aur technology ka perfect combination hai.
 </section>
 
 <!-- GALLERY -->
-<section class="section">
-<h2>Railway Station Gallery</h2>
-<div class="gallery">
-  <img src="images/station1.jpg">
-  <img src="images/station2.jpg">
-  <img src="images/station3.jpg">
-  <img src="images/station1.jpg">
+<div class="gallery" style="
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:nowrap;
+">
+  <img src="images/station1.jpg" style="width:24%; border-radius:10px;">
+  <img src="images/station2.jpg" style="width:24%; border-radius:10px;">
+  <img src="images/station3.jpg" style="width:24%; border-radius:10px;">
+  <img src="images/station1.jpg" style="width:24%; border-radius:10px;">
 </div>
-</section>
 
 <!-- TEAM -->
 <section class="section team">
 <h2>Project Team</h2>
 <div class="team-box">
   <div class="member">
-    <img src="images/raj.jpeg">
+    <img src="images/raj.jpeg" alt="Raj Patil">
     <h3>Raj Patil</h3>
     <p>Frontend Developer</p>
   </div>
   <div class="member">
-    <img src="images/rahul.jpeg">
+    <img src="images/rahul.jpeg" alt="Rahul Chimankar">
     <h3>Rahul Chimankar</h3>
     <p>UI / UX Designer</p>
   </div>
@@ -101,10 +94,50 @@ heritage aur technology ka perfect combination hai.
 <h2>Ticket Booking</h2>
 <form id="ticketForm">
   <input id="name" placeholder="Passenger Name" required>
-  <input id="from" placeholder="From Station" required>
-  <input id="to" placeholder="To Station" required>
+
+  <input id="from" list="stations" placeholder="From Station" required>
+  <input id="to" list="stations" placeholder="To Station" required>
+
+  <datalist id="stations">
+    <option value="New Delhi">
+    <option value="Mumbai Central">
+    <option value="Howrah Junction">
+    <option value="Chennai Central">
+    <option value="Bengaluru City">
+    <option value="Secunderabad">
+    <option value="Pune Junction">
+    <option value="Bhopal Junction">
+    <option value="Indore Junction">
+    <option value="Nagpur Junction">
+    <option value="Burhanpur">
+    <option value="Itarsi Junction">
+    <option value="Jhansi Junction">
+    <option value="Kanpur Central">
+    <option value="Prayagraj Junction">
+    <option value="Patna Junction">
+    <option value="Ahmedabad Junction">
+    <option value="Jaipur Junction">
+    <option value="Kota Junction">
+    <option value="Ujjain Junction">
+  </datalist>
+
   <input type="date" required>
-  <button type="submit">Book Ticket & Download PDF</button>
+
+  <button type="submit">Confirm Ticket</button>
+  
+  <!-- PAYMENT OPTION -->
+<h3>Choose Payment Method</h3>
+<select id="paymentMethod" required>
+  <option value="">Select Payment</option>
+  <option value="Credit Card">Credit / Debit Card</option>
+  <option value="UPI">UPI</option>
+  <option value="Net Banking">Net Banking</option>
+  <option value="Cash">Cash on Station</option>
+</select>
+
+<div id="paymentDetails" style="display:none; margin-top:10px;">
+  <!-- Dynamic fields appear here -->
+</div>
 </form>
 </section>
 
@@ -133,5 +166,32 @@ width="100%" height="350" style="border-radius:10px;border:0;">
 </footer>
 
 <script src="script.js"></script>
+
+<div id="ticketModal" style="
+display:none;
+position:fixed;
+top:0; left:0;
+width:100%; height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+z-index:9999;
+">
+  <div style="
+  background:#fff;
+  padding:30px;
+  width:90%;
+  max-width:420px;
+  border-radius:15px;
+  text-align:center;
+  ">
+    <h2>🎫 Ticket Preview</h2>
+    <p id="previewText"></p>
+
+    <button onclick="downloadTicket()">⬇️ Download Ticket</button>
+    <br><br>
+    <button onclick="closeModal()" style="background:#ccc;">Cancel</button>
+  </div>
+</div>
 </body>
 </html>
