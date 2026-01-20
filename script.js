@@ -1,24 +1,28 @@
-// WEATHER (DEMO)
-document.getElementById("weather").innerText =
-"🌤️ Temperature: 23°C | Wind: 8 km/h";
+// -------------------- WEATHER (DEMO) --------------------
+const temp = Math.floor(Math.random() * 10) + 22;
+const wind = Math.floor(Math.random() * 6) + 5;
 
-// COMMON ANNOUNCEMENT FUNCTION (OVERLAP FIX)
+document.getElementById("weather").innerText =
+  `🌤️ Temperature: ${temp}°C | Wind: ${wind} km/h`;
+
+// -------------------- COMMON ANNOUNCEMENT --------------------
 function speak(text, pitch = 1.2) {
   speechSynthesis.cancel(); // stop previous speech
   let msg = new SpeechSynthesisUtterance(text);
   msg.lang = "en-IN";
   msg.pitch = pitch;
+  msg.rate = 0.95; // realistic railway announcement speed
   speechSynthesis.speak(msg);
 }
 
-// STATION ANNOUNCEMENT
+// -------------------- STATION ANNOUNCEMENT --------------------
 function playAnnouncement() {
   speak(
     "Welcome to Burhanpur Railway Station. We wish you a safe and pleasant journey."
   );
 }
 
-// PLATFORM ANNOUNCEMENT (TRAIN BASED)
+// -------------------- PLATFORM ANNOUNCEMENT --------------------
 function platformAnnouncement() {
   let train = document.getElementById("trainSelect").value;
   let text = "";
@@ -37,7 +41,7 @@ function platformAnnouncement() {
   speak(text, 1.3);
 }
 
-// LIVE TRAIN STATUS
+// -------------------- LIVE TRAIN STATUS --------------------
 document.getElementById("trainSelect").addEventListener("change", function () {
   let r = document.getElementById("trainResult");
 
@@ -50,6 +54,26 @@ document.getElementById("trainSelect").addEventListener("change", function () {
   else r.innerText = "";
 });
 
+// -------------------- PAYMENT METHOD DYNAMIC FIELDS --------------------
+document.getElementById("paymentMethod").addEventListener("change", function () {
+  let box = document.getElementById("paymentDetails");
+
+  if (this.value === "UPI") {
+    box.style.display = "block";
+    box.innerHTML = '<input placeholder="Enter UPI ID">';
+  } else if (this.value === "Credit Card") {
+    box.style.display = "block";
+    box.innerHTML =
+      '<input placeholder="Card Number">' +
+      '<input placeholder="Expiry Date">' +
+      '<input placeholder="CVV">';
+  } else {
+    box.style.display = "none";
+    box.innerHTML = "";
+  }
+});
+
+// -------------------- TICKET FORM SUBMIT --------------------
 let ticketData = null;
 
 document.getElementById("ticketForm").addEventListener("submit", function (e) {
@@ -59,6 +83,8 @@ document.getElementById("ticketForm").addEventListener("submit", function (e) {
     name: document.getElementById("name").value,
     from: document.getElementById("from").value,
     to: document.getElementById("to").value,
+    date: document.querySelector('input[type="date"]').value,
+    payment: document.getElementById("paymentMethod").value,
     pnr: "PNR" + Math.floor(Math.random() * 900000 + 100000)
   };
 
@@ -66,15 +92,19 @@ document.getElementById("ticketForm").addEventListener("submit", function (e) {
     "<b>Passenger:</b> " + ticketData.name + "<br>" +
     "<b>From:</b> " + ticketData.from + "<br>" +
     "<b>To:</b> " + ticketData.to + "<br>" +
+    "<b>Date:</b> " + ticketData.date + "<br>" +
+    "<b>Payment:</b> " + ticketData.payment + "<br>" +
     "<b>PNR:</b> " + ticketData.pnr;
 
   document.getElementById("ticketModal").style.display = "flex";
 });
 
+// -------------------- MODAL CLOSE --------------------
 function closeModal() {
   document.getElementById("ticketModal").style.display = "none";
 }
 
+// -------------------- DOWNLOAD TICKET PDF --------------------
 function downloadTicket() {
   const { jsPDF } = window.jspdf;
   let pdf = new jsPDF();
@@ -85,7 +115,9 @@ function downloadTicket() {
   pdf.text("Passenger: " + ticketData.name, 20, 65);
   pdf.text("From: " + ticketData.from, 20, 75);
   pdf.text("To: " + ticketData.to, 20, 85);
-  pdf.text("Status: Confirmed", 20, 100);
+  pdf.text("Date: " + ticketData.date, 20, 95);
+  pdf.text("Payment: " + ticketData.payment, 20, 105);
+  pdf.text("Status: Confirmed", 20, 120);
 
   pdf.save("Railway_Ticket.pdf");
   closeModal();
